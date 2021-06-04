@@ -1,4 +1,5 @@
 import { getWalkers } from "./database.js"
+import { getCities } from "./database.js"
 
 document.addEventListener(
     "click",
@@ -9,7 +10,9 @@ document.addEventListener(
 
             for (const walker of walkers) {
                 if (walker.id === parseInt(walkerId)) {
-                    window.alert(`${walker.name} services ${walker.city}`)
+                    const foundCity = cities.find(city => city.id === walker.cityId)
+
+                    window.alert(`${walker.name} services ${foundCity.name}`)
                 }
             }
         }
@@ -18,6 +21,7 @@ document.addEventListener(
 
 
 const walkers = getWalkers()
+const cities = getCities()
 
 
 export const Walkers = () => {
